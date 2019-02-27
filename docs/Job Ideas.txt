@@ -1,0 +1,20 @@
+- Submit collection of data to website (automatic testing)
+- Auto register and then auto create related items for a list of users (automatic testing)
+- Auto login to website (e.g. Esense Admin)
+- Mine email addresses from website
+- Crawl website and cache website files (HTML, CSS, JavaScript, images etc)
+- Aggregate data and put into CSV file
+- Clean and de-duplicate data
+- Smart find and replace (templates, like TaskScanner) in files
+- Analyse data and generate report summary (e.g. questionnaire results)
+- Mass customised email campaign
+- Auto respond to user queries by utilising schedule, web API calls and knowledge/conversation/AI systems
+- Auto respond to emails (create utility for downloading emails using SMTP)
+- Database schema comparison and migration
+- Code release and deployment (to testing, and live sites, including plug-ins)
+- Auto delete/copy/move predefined/filtered set of files or directories on the local file system
+- Auto upload predefined/filtered set of files or directories via FTP
+- Website launcher/disabler
+- eLearning companion
+- Computer cleanup/maintenance tasks like defrag, remove old files, clean registry etc
+- Paint graphs onto a screen indicating performance of some type such as active users over time, sales over time (similar to the graphs in windows task manager).

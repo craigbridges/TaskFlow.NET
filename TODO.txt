@@ -1,0 +1,21 @@
+Research:
+- Async
+- ANN
+- Decision Trees
+- Think of more example jobs/utilities (including some with AI components) and put into spreadsheet
+
+Design:
+- Filter everything against a user
+- Learning
+- Finish conversations
+	- Feedback loop for non recognised inputs (break down users input and ask what intent was for each part)
+	- Alternative query engine if no result found (e.g. Google)
+	- https://developers.google.com/actions/reference/v1/conversation
+	- https://developers.google.com/actions/reference/v1/action-package
+- Cloud
+	- Ability to communicate with other instances of Netbot (against same user) or other computers (e.g. via remote desktop) to run commands/utilities/jobs. If other device not on-line/on then it could be scheduled on 'the cloud' (e.g. on-line) and synced when other device is switched on or taken on-line.
+
+Implementation:
+- Create solution and start structuring code base
+- Choose Open Source license
+- Add to public GitHub repository

@@ -1,0 +1,2763 @@
+<Project>
+  <Name>Netbot</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Utilities</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>IUtility</Name>
+        <Access>Public</Access>
+        <Location left="495" top="31" />
+        <Size width="420" height="214" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">string Name { get; }</Member>
+        <Member type="Property">string Description { get; }</Member>
+        <Member type="Property">bool Enabled { get; }</Member>
+        <Member type="Property">IEnumerable&lt;UtilityCategoryAssignment&gt; CategoryAssignments { get; }</Member>
+        <Member type="Method">bool IsAssignedToCategory(string categoryKey)</Member>
+        <Member type="Property">IEnumerable&lt;UtilityParameter&gt; Parameters { get; }</Member>
+        <Member type="Property">IEnumerable&lt;UtilitySetting&gt; Configuration { get; }</Member>
+        <Member type="Property">Type OutputType { get; }</Member>
+        <Member type="Method">UtilityOutput Execute(params UtilityParameterValue[] parameterValues)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilityParameter</Name>
+        <Access>Public</Access>
+        <Location left="1042" top="31" />
+        <Size width="185" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public Type DataType { get; }</Member>
+        <Member type="Property">public bool Optional { get; }</Member>
+        <Member type="Property">public object DefaultValue { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilitySetting</Name>
+        <Access>Public</Access>
+        <Location left="495" top="319" />
+        <Size width="190" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Label { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public Type ValueType { get; }</Member>
+        <Member type="Property">public object FactoryValue { get; }</Member>
+        <Member type="Property">public object Value { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilityOutput</Name>
+        <Access>Public</Access>
+        <Location left="1042" top="256" />
+        <Size width="181" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public IUtility Utility { get; }</Member>
+        <Member type="Property">public object ReturnValue { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Member type="Property">public int ExecutionTime { get; }</Member>
+        <Member type="Property">public bool Success { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilityParameterValue</Name>
+        <Access>Public</Access>
+        <Location left="743" top="319" />
+        <Size width="163" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public object Value { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUtilityRepository</Name>
+        <Access>Public</Access>
+        <Location left="28" top="31" />
+        <Size width="389" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">IUtility GetUtility(string name)</Member>
+        <Member type="Method">IEnumerable&lt;IUtility&gt; GetAllUtilities()</Member>
+        <Member type="Method">IEnumerable&lt;IUtility&gt; GetUtilitiesForCategory(string categoryKey)</Member>
+        <Member type="Method">IEnumerable&lt;IUtility&gt; GetEnabledUtilities()</Member>
+        <Member type="Method">IEnumerable&lt;IUtility&gt; GetDisabledUtilities()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilityCategory</Name>
+        <Access>Public</Access>
+        <Location left="28" top="485" />
+        <Size width="174" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Key { get; }</Member>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUtilityCategoryRepository</Name>
+        <Access>Public</Access>
+        <Location left="28" top="207" />
+        <Size width="300" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddCategory(UtilityCategory category)</Member>
+        <Member type="Method">UtilityCategory GetCategory(strign key)</Member>
+        <Member type="Method">IEnumerable&lt;UtilityCategory&gt; GetAllCategories()</Member>
+        <Member type="Method">void UpdateCategory(UtilityCategory category)</Member>
+        <Member type="Method">void RemoveCategory(string key)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilityCategoryAssignment</Name>
+        <Access>Public</Access>
+        <Location left="743" top="485" />
+        <Size width="195" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string AssignmentKey { get; }</Member>
+        <Member type="Property">public string CategoryKey { get; }</Member>
+        <Member type="Property">public string UtilityName { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>940</X>
+          <Y>87</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1017</X>
+          <Y>87</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>815</X>
+          <Y>294</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>957</X>
+          <Y>163</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1006</X>
+          <Y>355</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>101</X>
+          <Y>378</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>717</X>
+          <Y>273</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>717</X>
+          <Y>528</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>235</X>
+          <Y>573</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>718</X>
+          <Y>573</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Jobs</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Job</Name>
+        <Access>Public</Access>
+        <Location left="463" top="26" />
+        <Size width="410" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string UserId { get; }</Member>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Member type="Property">public DateTime DateModified { get; }</Member>
+        <Member type="Property">public bool Active { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;JobCategoryAssignment&gt; CategoryAssignments { get; }</Member>
+        <Member type="Method">public bool IsAssignedToCategory(string categoryKey)</Member>
+        <Member type="Method">public void AssignToCategory(string categoryKey)</Member>
+        <Member type="Method">public void UnassignFromCategory(string categoryKey)</Member>
+        <Member type="Property">public IEnumerable&lt;JobTask&gt; Tasks { get; }</Member>
+        <Member type="Property">public JobRepeatType RepeatType { get; }</Member>
+        <Member type="Property">public string RepeaterInputName { get; }</Member>
+        <Member type="Property">public int? RepeatCount { get; }</Member>
+        <Member type="Property">public TimeSpan? RepeatInterval { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobTask</Name>
+        <Access>Public</Access>
+        <Location left="973" top="26" />
+        <Size width="309" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Job Job { get; }</Member>
+        <Member type="Property">public int Number { get; }</Member>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public string UtilityName { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;UtilityParamater&gt; Inputs { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;JobTaskMapping&gt; Mappings { get; }</Member>
+        <Member type="Method">public JobTaskOutput Run(JobPipeline pipeline)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobPipeline</Name>
+        <Access>Public</Access>
+        <Location left="973" top="377" />
+        <Size width="333" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Job Job { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;JobTask&gt; TaskQueue { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;JobTaskOutput&gt; CompletedTasks { get; }</Member>
+        <Member type="Property">public bool EndOfLine { get; }</Member>
+        <Member type="Property">public int ExecutionTime { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;JobTaskError&gt; ExecutionErrors { get; }</Member>
+        <Member type="Property">public bool Success { get; }</Member>
+        <Member type="Method">public JobTask GetNextTask()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobTaskOutput</Name>
+        <Access>Public</Access>
+        <Location left="1416" top="179" />
+        <Size width="185" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public JobTask Task { get; }</Member>
+        <Member type="Property">public UtilityOutput Result { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobTaskError</Name>
+        <Access>Public</Access>
+        <Location left="1416" top="475" />
+        <Size width="163" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public JobTask Task { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IJobRepository</Name>
+        <Access>Public</Access>
+        <Location left="27" top="26" />
+        <Size width="363" height="231" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddJob(Job job)</Member>
+        <Member type="Method">void GetJob(string userId, string name)</Member>
+        <Member type="Method">IEnumerable&lt;Job&gt; GetAllJobs()</Member>
+        <Member type="Method">IEnumerable&lt;Job&gt; GetJobsForCategory(string categoryKey)</Member>
+        <Member type="Method">IEnumerable&lt;Job&gt; GetActiveJobs()</Member>
+        <Member type="Method">IEnumerable&lt;Job&gt; GetInactiveJobs()</Member>
+        <Member type="Method">IEnumerable&lt;Job&gt; GetJobs(string userId)</Member>
+        <Member type="Method">IEnumerable&lt;Job&gt; GetJobs(string userId, string categoryKey)</Member>
+        <Member type="Method">void UpdateJob(Job job)</Member>
+        <Member type="Method">void RemoveJob(string userId, string name)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IJobExecutor</Name>
+        <Access>Public</Access>
+        <Location left="27" top="449" />
+        <Size width="498" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">JobExecutionResult Execute(string jobName, Dictionary&lt;string, object&gt; inputValues)</Member>
+        <Member type="Method">void Schedule(string jobName, Dictionary&lt;string, object&gt; inputValues, DateTime date)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobExecutionResult</Name>
+        <Access>Public</Access>
+        <Location left="27" top="636" />
+        <Size width="226" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public JobPipeline Pipeline { get; }</Member>
+        <Member type="Property">public JobTaskOutput FinalOutput { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>JobRepeatType</Name>
+        <Access>Public</Access>
+        <Location left="509" top="636" />
+        <Size width="163" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int NoRepeat</Member>
+        <Member type="Field">int Collection</Member>
+        <Member type="Field">int Predefined</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobTaskMapping</Name>
+        <Access>Public</Access>
+        <Location left="1416" top="26" />
+        <Size width="229" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public JobTask Task { get; }</Member>
+        <Member type="Property">public string OutputPropertyName { get; }</Member>
+        <Member type="Property">public string MappedInputName { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobCategory</Name>
+        <Access>Public</Access>
+        <Location left="1047" top="636" />
+        <Size width="174" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Key { get; }</Member>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IJobCategoryRepository</Name>
+        <Access>Public</Access>
+        <Location left="1322" top="636" />
+        <Size width="286" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddCategory(UtilityCategory category)</Member>
+        <Member type="Method">JobCategory GetCategory(strign key)</Member>
+        <Member type="Method">IEnumerable&lt;JobCategory&gt; GetAllCategories()</Member>
+        <Member type="Method">void UpdateCategory(JobCategory category)</Member>
+        <Member type="Method">void RemoveCategory(string key)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobCategoryAssignment</Name>
+        <Access>Public</Access>
+        <Location left="727" top="636" />
+        <Size width="195" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string AssignmentKey { get; }</Member>
+        <Member type="Property">public string CategoryKey { get; }</Member>
+        <Member type="Property">public string JobName { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>943</X>
+          <Y>438</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>942</X>
+          <Y>192</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1130</X>
+          <Y>338</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1336</X>
+          <Y>520</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>498</X>
+          <Y>421</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>498</X>
+          <Y>391</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="6" second="7">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>596</X>
+          <Y>405</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>596</X>
+          <Y>608</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="9">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1320</X>
+          <Y>219</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="10" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1018</X>
+          <Y>703</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>951</X>
+          <Y>703</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>804</X>
+          <Y>395</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>804</X>
+          <Y>611</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Commands</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>ICommand</Name>
+        <Access>Public</Access>
+        <Location left="38" top="40" />
+        <Size width="522" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">string Name { get; }</Member>
+        <Member type="Property">string Summary { get; }</Member>
+        <Member type="Property">string FullDescription { get; }</Member>
+        <Member type="Property">IEnumerable&lt;CommandParameter&gt; Parameters { get; }</Member>
+        <Member type="Method">CommandExecutionOutput Execute(params CommandParameterValue[] parameterValues)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandParameter</Name>
+        <Access>Public</Access>
+        <Location left="690" top="40" />
+        <Size width="366" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;CommandParameterOption&gt; Options { get; }</Member>
+        <Member type="Property">public bool Required { get; }</Member>
+        <Member type="Property">public object DefaultValue { get; }</Member>
+        <Member type="Property">public CommandParameterType ValueType { get; }</Member>
+        <Member type="Method">public CommandParameterValidationResult Validate(string value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandParameterValue</Name>
+        <Access>Public</Access>
+        <Location left="370" top="325" />
+        <Size width="188" height="120" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">public object Value { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandExecutionOutput</Name>
+        <Access>Public</Access>
+        <Location left="38" top="325" />
+        <Size width="216" height="167" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public IUtility Utility { get; }</Member>
+        <Member type="Property">public object ReturnValue { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Member type="Property">public TimeSpan ExecutionTime { get; }</Member>
+        <Member type="Property">public bool Success { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandParameterValidationResult</Name>
+        <Access>Public</Access>
+        <Location left="890" top="512" />
+        <Size width="247" height="156" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public CommandParameter Parameter { get; }</Member>
+        <Member type="Property">public string Value { get; }</Member>
+        <Member type="Property">public bool IsValid { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandParameterOption</Name>
+        <Access>Public</Access>
+        <Location left="643" top="325" />
+        <Size width="247" height="137" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public CommandParameter Parameter { get; }</Member>
+        <Member type="Property">public string Value { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>CommandParameterType</Name>
+        <Access>Public</Access>
+        <Location left="1116" top="230" />
+        <Size width="162" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Text</Member>
+        <Member type="Field">int Integer</Member>
+        <Member type="Field">int Decimal</Member>
+        <Member type="Field">int Boolean</Member>
+        <Member type="Field">int FilePath</Member>
+        <Member type="Field">int Url</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICommandRepository</Name>
+        <Access>Public</Access>
+        <Location left="174" top="560" />
+        <Size width="284" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ICommand GetCommand(string name)</Member>
+        <Member type="Method">IEnumerable&lt;ICommand&gt; GetAllCommands()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandCall</Name>
+        <Access>Public</Access>
+        <Location left="38" top="708" />
+        <Size width="346" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string CommandName { get; }</Member>
+        <Member type="Property">public List&lt;CommandParameterValue&gt; ParameterValues { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICommandQueueManager</Name>
+        <Access>Public</Access>
+        <Location left="1369" top="40" />
+        <Size width="256" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void RunQueue(CommandQueue queue)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandQueue</Name>
+        <Access>Public</Access>
+        <Location left="1369" top="364" />
+        <Size width="545" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string UserId { get; }</Member>
+        <Member type="Method">public void Add(string commandName, IEmumerable&lt;CommandParameterValue&gt; parameterValues)</Member>
+        <Member type="Method">public void Remove(int number)</Member>
+        <Member type="Method">public CommandCall GetNext()</Member>
+        <Member type="Property">public List&lt;CommandCall&gt; Queue { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>456</X>
+          <Y>220</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>456</X>
+          <Y>299</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1003</X>
+          <Y>283</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1003</X>
+          <Y>487</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1200</X>
+          <Y>109</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>293</X>
+          <Y>535</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>510</X>
+          <Y>748</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="10" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>422</X>
+          <Y>787</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Scheduling</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ScheduledTask</Name>
+        <Access>Public</Access>
+        <Location left="632" top="31" />
+        <Size width="358" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Key { get; }</Member>
+        <Member type="Property">public string UserId { get; }</Member>
+        <Member type="Property">public string Title { get; }</Member>
+        <Member type="Property">public string Notes { get; }</Member>
+        <Member type="Property">public DateTime ScheduledDate { get; }</Member>
+        <Member type="Property">public ScheduledTaskType TaskType { get; }</Member>
+        <Member type="Property">public string TargetKey { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ScheduledTaskParameter&gt; Parameters { get; }</Member>
+        <Member type="Property">public bool Repeat { get; }</Member>
+        <Member type="Property">public int? RepeatInterval { get; }</Member>
+        <Member type="Property">public ScheduleIntervalType? RepeatIntervalType { get; }</Member>
+        <Member type="Property">public long? RepeatLimit { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IScheduledTaskRepository</Name>
+        <Access>Public</Access>
+        <Location left="36" top="31" />
+        <Size width="498" height="180" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddTask(ScheduledTask task)</Member>
+        <Member type="Method">void GetTask(string taskKey)</Member>
+        <Member type="Method">IEnumerable&lt;ScheduledTask&gt; GetAllTasks()</Member>
+        <Member type="Method">IEnumerable&lt;ScheduledTask&gt; GetTasks(DateTime startDate, DateTime? endDate)</Member>
+        <Member type="Method">IEnumerable&lt;ScheduledTask&gt; GetTasks(string userId)</Member>
+        <Member type="Method">void UpdateTask(ScheduledTask task)</Member>
+        <Member type="Method">void RemoveTask(string taskKey)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IScheduleProcessor</Name>
+        <Access>Public</Access>
+        <Location left="36" top="284" />
+        <Size width="163" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Run()</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ScheduleIntervalType</Name>
+        <Access>Public</Access>
+        <Location left="632" top="418" />
+        <Size width="162" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Seconds</Member>
+        <Member type="Field">int Minutes</Member>
+        <Member type="Field">int Hours</Member>
+        <Member type="Field">int Days</Member>
+        <Member type="Field">int Weeks</Member>
+        <Member type="Field">int Months</Member>
+        <Member type="Field">int Years</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ScheduledTaskParameter</Name>
+        <Access>Public</Access>
+        <Location left="844" top="418" />
+        <Size width="162" height="121" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public object Value { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ScheduledTaskType</Name>
+        <Access>Public</Access>
+        <Location left="414" top="418" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Command</Member>
+        <Member type="Field">int Utility</Member>
+        <Member type="Field">int Job</Member>
+        <Member type="Field">int Conversation</Member>
+        <Member type="Field">int Sync</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>559</X>
+          <Y>125</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>722</X>
+          <Y>341</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>920</X>
+          <Y>338</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>661</X>
+          <Y>339</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Conversations</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Conversation</Name>
+        <Access>Public</Access>
+        <Location left="27" top="27" />
+        <Size width="334" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Key { get; }</Member>
+        <Member type="Property">public bool Active { get; }</Member>
+        <Member type="Property">public DateTime DateStarted { get; }</Member>
+        <Member type="Property">public DateTime LastActivityDate { get; }</Member>
+        <Member type="Property">public string UserId { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationMessage&gt; Messages { get; }</Member>
+        <Member type="Method">public void SubmitMessage(string input)</Member>
+        <Member type="Method">public void RemoveMessage(string key)</Member>
+        <Member type="Method">public void ClearMessages()</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationScope&gt; Scopes { get; }</Member>
+        <Member type="Method">public bool HasActiveScope()</Member>
+        <Member type="Method">public ConversationScope GetCurrentScope()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationMessage</Name>
+        <Access>Public</Access>
+        <Location left="477" top="27" />
+        <Size width="415" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Key { get; }</Member>
+        <Member type="Property">public Conversation Conversation { get; }</Member>
+        <Member type="Property">public DateTime DateSubmitted { get; }</Member>
+        <Member type="Property">public ConversationInputType InputType { get; }</Member>
+        <Member type="Property">public string InputText { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationAttachment&gt; InputAttachments { get; }</Member>
+        <Member type="Property">public ConversationResponseType ResponseType { get; }</Member>
+        <Member type="Property">public string ResponseText { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationAttachment&gt; ResponseAttachments { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationAction&gt; Actions { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationAttachment</Name>
+        <Access>Public</Access>
+        <Location left="477" top="350" />
+        <Size width="247" height="114" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public ConversationMessage Message { get; }</Member>
+        <Member type="Property">public File File { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>File</Name>
+        <Access>Public</Access>
+        <Location left="477" top="553" />
+        <Size width="182" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string ContentType { get; }</Member>
+        <Member type="Property">public byte[] Content { get; }</Member>
+        <Member type="Property">public long FileSize { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IConversationInterpreter</Name>
+        <Access>Public</Access>
+        <Location left="756" top="745" />
+        <Size width="365" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ConversationInterpretation Interpret(ConversationInput input)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IConversationRepository</Name>
+        <Access>Public</Access>
+        <Location left="27" top="987" />
+        <Size width="321" height="180" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddConversation(Conversation conversation)</Member>
+        <Member type="Method">Conversation GetConversation(string key)</Member>
+        <Member type="Method">Conversation GetLatestConversation(string userId)</Member>
+        <Member type="Method">IEnumerable&lt;Conversation&gt; GetAllConversations()</Member>
+        <Member type="Method">void GetConversations(string userId)</Member>
+        <Member type="Method">void UpdateConversation(Conversation conversation)</Member>
+        <Member type="Method">void RemoveConversation(string key)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ConversationActionType</Name>
+        <Access>Public</Access>
+        <Location left="1208" top="494" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int RunJob</Member>
+        <Member type="Field">int RunUtility</Member>
+        <Member type="Field">int ScheduleJob</Member>
+        <Member type="Field">int ScheduleUtility</Member>
+        <Member type="Field">int Query</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationIntent</Name>
+        <Access>Public</Access>
+        <Location left="1093" top="253" />
+        <Size width="278" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public ConversationActionType ActionType { get; }</Member>
+        <Member type="Property">public string ActionName { get; }</Member>
+        <Member type="Property">public Dictionary&lt;string, string&gt; Arguments { get; }</Member>
+        <Member type="Property">public double Score { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationAction</Name>
+        <Access>Public</Access>
+        <Location left="1093" top="27" />
+        <Size width="247" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public ConversationMessage Message { get; }</Member>
+        <Member type="Property">public DateTime? DateStarted { get; }</Member>
+        <Member type="Property">public DateTime? DateCompleted { get; }</Member>
+        <Member type="Property">public string ResultMessage { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationScope</Name>
+        <Access>Public</Access>
+        <Location left="27" top="394" />
+        <Size width="335" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Conversation Conversation { get; }</Member>
+        <Member type="Property">public string InitialMessageKey { get; }</Member>
+        <Member type="Property">public string FinalMessageKey { get; }</Member>
+        <Member type="Property">public ConversationIntent Intent { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationScopePhase&gt; Phases { get; }</Member>
+        <Member type="Property">public bool IsClosed { get; }</Member>
+        <Member type="Property">public DateTime? DateClosed { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ConversationInputType</Name>
+        <Access>Public</Access>
+        <Location left="756" top="494" />
+        <Size width="173" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Unrecognised</Member>
+        <Member type="Field">int Question</Member>
+        <Member type="Field">int Answer</Member>
+        <Member type="Field">int ActionRequest</Member>
+        <Member type="Field">int Confirmation</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ConversationResponseType</Name>
+        <Access>Public</Access>
+        <Location left="965" top="494" />
+        <Size width="173" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int NoAction</Member>
+        <Member type="Field">int Question</Member>
+        <Member type="Field">int Answer</Member>
+        <Member type="Field">int ActionResult</Member>
+        <Member type="Field">int ConfirmationPrompt</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationInput</Name>
+        <Access>Public</Access>
+        <Location left="571" top="905" />
+        <Size width="364" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Conversation Conversation { get; }</Member>
+        <Member type="Property">public string RawText { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ConversationAttachment&gt; Attachments { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationInterpretation</Name>
+        <Access>Public</Access>
+        <Location left="978" top="905" />
+        <Size width="260" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public ConversationInput Input { get; }</Member>
+        <Member type="Property">public ConversationInputType InputType { get; }</Member>
+        <Member type="Property">public ConversationIntent Intent { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationScopePhase</Name>
+        <Access>Public</Access>
+        <Location left="27" top="685" />
+        <Size width="313" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public ConversationScope Scope { get; }</Member>
+        <Member type="Property">public int Number { get; }</Member>
+        <Member type="Property">public ConversationInputType ExpectedInputType { get; }</Member>
+        <Member type="Property">public ConversationInputType? InputTypeReceived { get; }</Member>
+        <Member type="Property">public string TextPrompt { get; }</Member>
+        <Member type="Property">public bool IsComplete { get; }</Member>
+        <Member type="Property">public DateTime? DateCompleted { get; }</Member>
+        <Member type="Property">public string AssociatedMessageKey { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>NOTES:
+Add configuration for conditions where query is performed but no answer found so an action such as search Google can be run instead (perhaps by specifying a fallback command to run?).</Text>
+        <Location left="1301" top="745" />
+        <Size width="208" height="135" />
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>386</X>
+          <Y>148</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>568</X>
+          <Y>501</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>568</X>
+          <Y>528</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>390</X>
+          <Y>276</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1216</X>
+          <Y>228</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="8">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>841</X>
+          <Y>468</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="11">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>921</X>
+          <Y>208</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1029</X>
+          <Y>469</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="12">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>838</X>
+          <Y>848</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1049</X>
+          <Y>849</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="12" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>446</X>
+          <Y>983</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>413</X>
+          <Y>212</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Logs</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>IEventLogRepository&lt;T&gt;</Name>
+        <Access>Public</Access>
+        <Location left="28" top="30" />
+        <Size width="430" height="129" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddEntry(T entry)</Member>
+        <Member type="Method">IEnumerable&lt;T&gt; GetAllEntries()</Member>
+        <Member type="Method">IEnumerable&lt;T&gt; GetEntries(DateTime startDate, DateTime? endDate)</Member>
+        <Member type="Method">IEnumerable&lt;T&gt; FindEntries(string searchPhrase)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>EventLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="590" top="30" />
+        <Size width="372" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Member type="Property">public string Source { get; }</Member>
+        <Member type="Property">public string UserName { get; }</Member>
+        <Member type="Property">public string ComputerName { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;EventLogEntryDetail&gt; AdditionalDetails { get; }</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ErrorLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="28" top="364" />
+        <Size width="178" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string StackTrace { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EventLogEntryDetail</Name>
+        <Access>Public</Access>
+        <Location left="1070" top="30" />
+        <Size width="170" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Value { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UtilityLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="226" top="364" />
+        <Size width="178" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string UtilityName { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>JobLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="429" top="364" />
+        <Size width="178" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string JobName { get; }</Member>
+        <Member type="Property">public int ExecutionTime { get; }</Member>
+        <Member type="Property">public bool Success { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ScheduleLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="718" top="364" />
+        <Size width="178" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string TaskKey { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>QueryLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="932" top="364" />
+        <Size width="199" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string TargetName { get; }</Member>
+        <Member type="Property">public QueryType ResultType { get; }</Member>
+        <Member type="Property">public bool Success { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConversationLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="1168" top="364" />
+        <Size width="178" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string RawInput { get; }</Member>
+        <Member type="Property">public string Response { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LearningLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="1388" top="130" />
+        <Size width="178" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string ItemName { get; }</Member>
+        <Member type="Property">public decimal Score { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CommandLogEntry</Name>
+        <Access>Public</Access>
+        <Location left="1388" top="364" />
+        <Size width="201" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string CommandName { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>618</X>
+          <Y>241</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>989</X>
+          <Y>114</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>653</X>
+          <Y>292</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>651</X>
+          <Y>404</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>684</X>
+          <Y>241</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>752</X>
+          <Y>254</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>794</X>
+          <Y>285</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>829</X>
+          <Y>234</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1361</X>
+          <Y>186</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1468</X>
+          <Y>304</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>901</X>
+          <Y>238</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Learning</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>DecisionTree</Name>
+        <Access>Public</Access>
+        <Location left="42" top="36" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DecisionNode</Name>
+        <Access>Public</Access>
+        <Location left="294" top="36" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DecisionVariable</Name>
+        <Access>Public</Access>
+        <Location left="534" top="36" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Knowledge</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Structure">
+        <Name>TermDataType</Name>
+        <Access>Public</Access>
+        <Location left="328" top="27" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Atom</Member>
+        <Member type="Field">int Number</Member>
+        <Member type="Field">int Variable</Member>
+        <Member type="Field">int Compound</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>Term</Name>
+        <Access>Public</Access>
+        <Location left="654" top="27" />
+        <Size width="324" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Value { get; }</Member>
+        <Member type="Property">public TermDataType DataType { get; }</Member>
+        <Member type="Method">public void SetValue(string value)</Member>
+        <Member type="Method">public void SetValue(TermDataType dataType, string value)</Member>
+        <Member type="Property">public IEnumerable&lt;Term&gt; Arguments { get; }</Member>
+        <Member type="Method">public void AddArgument(Term term)</Member>
+        <Member type="Method">public void RemoveArgument(int index)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Rule</Name>
+        <Access>Public</Access>
+        <Location left="30" top="608" />
+        <Size width="289" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Member type="Property">public DateTime DateModified { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;Term&gt; Arguments { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;RuleVariant&gt; Variants { get; }</Member>
+        <Member type="Method">public RuleVariant CreateVariant()</Member>
+        <Member type="Method">public void GetVariant(int number)</Member>
+        <Member type="Method">public void RemoveVariant(int number)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RuleVariant</Name>
+        <Access>Public</Access>
+        <Location left="425" top="608" />
+        <Size width="539" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Rule Rule { get; }</Member>
+        <Member type="Property">public int Number { get; }</Member>
+        <Member type="Property">public RulePredicate Clauses { get; }</Member>
+        <Member type="Method">public void AddPredicate(string targetName, params Term[] terms)</Member>
+        <Member type="Method">public void AddPredicate(BooleanOperator operatorType, string targetName, params Term[] terms)</Member>
+        <Member type="Method">public RulePredicate GetPredicate(int number)</Member>
+        <Member type="Method">public void RemovePredicate(int number)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>BooleanOperator</Name>
+        <Access>Public</Access>
+        <Location left="1129" top="364" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">OR AND</Member>
+        <Member type="Field">int OR</Member>
+        <Member type="Field">int XOR</Member>
+        <Member type="Field">int NOT</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>RulePredicate</Name>
+        <Access>Public</Access>
+        <Location left="1053" top="608" />
+        <Size width="256" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public RuleVariant Variant { get; }</Member>
+        <Member type="Property">public int Number { get; }</Member>
+        <Member type="Property">public BooleanOperator Operator { get; }</Member>
+        <Member type="Property">public string TargetName { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;Term&gt; Arguments { get; }</Member>
+        <Member type="Method">public void AddArgument(Term term)</Member>
+        <Member type="Method">public void RemoveArgument(int index)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Fact</Name>
+        <Access>Public</Access>
+        <Location left="328" top="276" />
+        <Size width="268" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string UserId { get; }</Member>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Description { get; }</Member>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Member type="Property">public DateTime DateModified { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;FactVariant&gt; Variants { get; }</Member>
+        <Member type="Method">public void AddVariant(Term term)</Member>
+        <Member type="Method">public FactVariant GetVariant(int number)</Member>
+        <Member type="Method">public void RemovePredicate(int number)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ClauseType</Name>
+        <Access>Public</Access>
+        <Location left="1890" top="638" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Fact</Member>
+        <Member type="Field">int Rule</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IClause</Name>
+        <Access>Public</Access>
+        <Location left="30" top="276" />
+        <Size width="247" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">string Name { get; }</Member>
+        <Member type="Property">string Description { get; }</Member>
+        <Member type="Property">DateTime DateCreated { get; }</Member>
+        <Member type="Property">DateTime DateModified { get; }</Member>
+        <Member type="Property">IEnumerable&lt;Term&gt; Arguments { get; }</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>FactVariant</Name>
+        <Access>Public</Access>
+        <Location left="691" top="276" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Fact Fact { get; }</Member>
+        <Member type="Property">public int Number { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Query</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="194" />
+        <Size width="252" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string TargetName { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;Term&gt; Arguments { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>QueryResult</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="405" />
+        <Size width="281" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Query Query { get; }</Member>
+        <Member type="Property">public QueryType ResultType { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Member type="Property">public bool Success { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;QueryAnswer&gt; Answers { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>QueryType</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="638" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Goal</Member>
+        <Member type="Field">int Query</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>QueryAnswer</Name>
+        <Access>Public</Access>
+        <Location left="1594" top="638" />
+        <Size width="238" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string VariableName { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;Term&gt; Matches { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IQueryExecutor</Name>
+        <Access>Public</Access>
+        <Location left="1766" top="194" />
+        <Size width="223" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">QueryResult Execute(Query query)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IClauseRepository&lt;T&gt;</Name>
+        <Access>Public</Access>
+        <Location left="762" top="875" />
+        <Size width="205" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddItem(T item)</Member>
+        <Member type="Method">bool ItemExists(string name)</Member>
+        <Member type="Method">T GetItem(string name)</Member>
+        <Member type="Method">IEnumerable&lt;T&gt; GetAllItems()</Member>
+        <Member type="Method">void UpdateItem(T item)</Member>
+        <Member type="Method">void RemoveItem(string name)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IFactRepository</Name>
+        <Access>Public</Access>
+        <Location left="425" top="967" />
+        <Size width="254" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">IEnumerable&lt;T&gt; GetItems(string userId)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IRuleRepository</Name>
+        <Access>Public</Access>
+        <Location left="425" top="875" />
+        <Size width="254" height="61" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IClauseTypeResolver</Name>
+        <Access>Public</Access>
+        <Location left="1766" top="405" />
+        <Size width="391" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">ClauseType ResolveType(string targetName, params Term[] terms)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IFactChecker</Name>
+        <Access>Public</Access>
+        <Location left="1380" top="27" />
+        <Size width="337" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool Check(string factName, params Term[] arguments)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IRuleResolver</Name>
+        <Access>Public</Access>
+        <Location left="1766" top="27" />
+        <Size width="222" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">QueryResult Resolve(Query query)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>400</X>
+          <Y>688</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1025</X>
+          <Y>683</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1220</X>
+          <Y>576</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1220</X>
+          <Y>547</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>254</X>
+          <Y>575</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>899</X>
+          <Y>533</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1107</X>
+          <Y>557</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>952</X>
+          <Y>542</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>82</X>
+          <Y>578</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>82</X>
+          <Y>456</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>175</X>
+          <Y>461</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="6" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>621</X>
+          <Y>350</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1511</X>
+          <Y>339</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1686</X>
+          <Y>524</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1695</X>
+          <Y>594</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="10" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1260</X>
+          <Y>257</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="10">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1879</X>
+          <Y>310</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1608</X>
+          <Y>380</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="16" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="17" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="18" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="19">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1829</X>
+          <Y>169</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="20">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="18">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1948</X>
+          <Y>372</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="16" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>14</X>
+          <Y>1000</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>379</X>
+          <Y>238</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Events</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>IEvent</Name>
+        <Access>Public</Access>
+        <Location left="34" top="34" />
+        <Size width="162" height="103" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IEventHandler&lt;T&gt;</Name>
+        <Access>Public</Access>
+        <Location left="383" top="34" />
+        <Size width="187" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Handle(T theEvent)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IEventDispatcher</Name>
+        <Access>Public</Access>
+        <Location left="34" top="243" />
+        <Size width="245" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Raise&lt;T&gt;(T theEvent)</Member>
+        <Member type="Method">IEnumerable&lt;T&gt; GetHandlersFor&lt;T&gt;()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IEventLogger</Name>
+        <Access>Public</Access>
+        <Location left="383" top="231" />
+        <Size width="204" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void LogEvent(IEvent theEvent)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Dependency" first="1" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="2" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Users</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>User</Name>
+        <Access>Public</Access>
+        <Location left="29" top="24" />
+        <Size width="294" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string UserId { get; }</Member>
+        <Member type="Property">public string DisplayName { get; }</Member>
+        <Member type="Method">public void SetDisplayName(string name)</Member>
+        <Member type="Property">public string EmailAddress { get; }</Member>
+        <Member type="Method">public void SetEmailAddress(string email)</Member>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Member type="Property">public DateTime DateModified { get; }</Member>
+        <Member type="Property">public DateTime LastActivityDate { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;UserMetaData&gt; MetaData { get; }</Member>
+        <Member type="Method">public void SetMetaData(string name, string value)</Member>
+        <Member type="Method">public void RemoveMetaData(string name)</Member>
+        <Member type="Property">public UserSharingOptions JobSharing { get; }</Member>
+        <Member type="Property">public UserSharingOptions ScheduleSharing { get; }</Member>
+        <Member type="Property">public UserSharingOptions KnowledgeSharing { get; }</Member>
+        <Member type="Property">public UserSharingOptions LearningSharing { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserMetaData</Name>
+        <Access>Public</Access>
+        <Location left="502" top="153" />
+        <Size width="162" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public User User { get; }</Member>
+        <Member type="Property">public string Name { get; }</Member>
+        <Member type="Property">public string Value { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserRepository</Name>
+        <Access>Public</Access>
+        <Location left="29" top="490" />
+        <Size width="401" height="197" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddUser(User user)</Member>
+        <Member type="Method">void GetUser(string userId)</Member>
+        <Member type="Method">IEnumerable&lt;User&gt; GetAllUsers()</Member>
+        <Member type="Method">IEnumerable&lt;User&gt; FindUsers(Dictionary&lt;string, string&gt; metaData)</Member>
+        <Member type="Method">IEnumerable&lt;User&gt; FindUsersByEmail(string emailAddress)</Member>
+        <Member type="Method">IEnumerable&lt;User&gt; FindUsersByName(string name)</Member>
+        <Member type="Method">void UpdateUser(User user)</Member>
+        <Member type="Method">void RemoveUser(string userId)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserIdGenerator</Name>
+        <Access>Public</Access>
+        <Location left="502" top="24" />
+        <Size width="162" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">string Generate()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserLink</Name>
+        <Access>Public</Access>
+        <Location left="1129" top="283" />
+        <Size width="201" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string UserIdOne { get; }</Member>
+        <Member type="Property">public string UserIdTwo { get; }</Member>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserLinkRequest</Name>
+        <Access>Public</Access>
+        <Location left="776" top="283" />
+        <Size width="214" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string FromUserId { get; }</Member>
+        <Member type="Property">public string ToUserId { get; }</Member>
+        <Member type="Property">public DateTime DateCreated { get; }</Member>
+        <Member type="Method">public void Accept(string message)</Member>
+        <Member type="Property">public bool Accepted { get; }</Member>
+        <Member type="Property">public DateTime? DateAccepted { get; }</Member>
+        <Member type="Method">public void Decline(string message)</Member>
+        <Member type="Property">public bool Declined { get; }</Member>
+        <Member type="Property">public DateTime? DateDeclined { get; }</Member>
+        <Member type="Property">public string RequestMessage { get; }</Member>
+        <Member type="Property">public string ResponseMessage { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserLinkRequestRepository</Name>
+        <Access>Public</Access>
+        <Location left="715" top="638" />
+        <Size width="350" height="180" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddRequest(UserLinkRequest request)</Member>
+        <Member type="Method">UserLinkRequest GetRequest(string requestKey)</Member>
+        <Member type="Method">IEnumerable&lt;UserLinkRequest&gt; GetAllRequests()</Member>
+        <Member type="Method">IEnumerable&lt;UserLinkRequest&gt; GetPendingRequests()</Member>
+        <Member type="Method">IEnumerable&lt;UserLinkRequest&gt; GetRequests(string userId)</Member>
+        <Member type="Method">void UpdateRequest(UserLinkRequest request)</Member>
+        <Member type="Method">void RemoveRequest(string requestKey)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserLinkRepository</Name>
+        <Access>Public</Access>
+        <Location left="1129" top="638" />
+        <Size width="320" height="180" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddLink(UserLink link)</Member>
+        <Member type="Method">UserLink GetLink(string userIdOne, string userIdTwo)</Member>
+        <Member type="Method">bool IsLinked(string userIdOne, string userIdTwo)</Member>
+        <Member type="Method">IEnumerable&lt;UserLink&gt; GetAllLinks()</Member>
+        <Member type="Method">IEnumerable&lt;UserLink&gt; GetLinks()</Member>
+        <Member type="Method">void UpdateLink(UserLink link)</Member>
+        <Member type="Method">void RemoveLink(string userIdOne, string userIdTwo)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserLinkManager</Name>
+        <Access>Public</Access>
+        <Location left="776" top="24" />
+        <Size width="337" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void RequestLink(string fromUserId, string toUserId)</Member>
+        <Member type="Method">void AcceptRequest(string fromUserId, string toUserId)</Member>
+        <Member type="Method">void DeclineRequest(string fromUserId, string toUserId)</Member>
+        <Member type="Method">bool AreUsersLinked(string userIdOne, string userIdTwo)</Member>
+        <Member type="Method">void RemoveLink(string userIdOne, string userIdTwo)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>UserSharingOptions</Name>
+        <Access>Public</Access>
+        <Location left="502" top="336" />
+        <Size width="162" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int DoNotShare</Member>
+        <Member type="Field">int Public</Member>
+        <Member type="Field">int LinkedOnly</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserDataContainer</Name>
+        <Access>Public</Access>
+        <Location left="1314" top="24" />
+        <Size width="293" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public User User { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;UserLink&gt; UserLinks { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;Job&gt; Jobs { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;ScheduledTask&gt; Schedule { get; }</Member>
+        <Member type="Property">public IEnumerable&lt;Fact&gt; Facts { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1062</X>
+          <Y>197</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>348</X>
+          <Y>309</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Cloud</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>IClient</Name>
+        <Access>Public</Access>
+        <Location left="23" top="405" />
+        <Size width="631" height="129" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">string ClientId { get; }</Member>
+        <Member type="Method">RemoteCallResponse PushCommands(string serverId, string userId, IEnumerable&lt;CommandCall&gt; commands)</Member>
+        <Member type="Method">RemoteCallResponse PushRequests(string userId, string serverId, IEnumerable&lt;UserLinkRequest&gt; requests)</Member>
+        <Member type="Method">RemoteCallResponse PushUserData(string userId, string serverId, UserDataContainer data)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IServer</Name>
+        <Access>Public</Access>
+        <Location left="251" top="21" />
+        <Size width="544" height="129" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">string ServerId { get; }</Member>
+        <Member type="Method">RemoteCallResult&lt;IEnumerable&lt;CommandCall&gt;&gt; PullCommands(string serverId, string userId)</Member>
+        <Member type="Method">RemoteCallResult&lt;IEnumerable&lt;UserLinkRequest&gt;&gt; PullRequests(string userId, string serverId)</Member>
+        <Member type="Method">RemoteCallResult&lt;UserDataContainer&gt; PullUserData(string userId, string serverId)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IRemoteCommunicator</Name>
+        <Access>Public</Access>
+        <Location left="890" top="21" />
+        <Size width="569" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">RemoteCallResponse Ping(string serverId)</Member>
+        <Member type="Method">RemoteCallResult&lt;T&gt; Pull&lt;T&gt;(string serverId, string userId, RemoteCallDataType dataType)</Member>
+        <Member type="Method">RemoteCallResponse Push(string serverId, string userId, RemoteCallDataType dataType, object data)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>HttpCommunicator</Name>
+        <Access>Public</Access>
+        <Location left="890" top="245" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TelnetCommunicator</Name>
+        <Access>Public</Access>
+        <Location left="1300" top="245" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WebSocketCommunicator</Name>
+        <Access>Public</Access>
+        <Location left="1098" top="245" />
+        <Size width="164" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BluetoothCommunicator</Name>
+        <Access>Public</Access>
+        <Location left="1496" top="245" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUserDataSynchronizer</Name>
+        <Access>Public</Access>
+        <Location left="583" top="245" />
+        <Size width="204" height="78" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Synchronize(string userId)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IConnectionManager</Name>
+        <Access>Public</Access>
+        <Location left="385" top="604" />
+        <Size width="344" height="112" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void Connect(string serverId)</Member>
+        <Member type="Method">void Disconnect(string serverId)</Member>
+        <Member type="Property">IEnumerable&lt;RegisteredServer&gt; ActiveConnections { get; }</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>RemoteCallResponse</Name>
+        <Access>Public</Access>
+        <Location left="890" top="416" />
+        <Size width="260" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string ServerId { get; }</Member>
+        <Member type="Property">public DateTime RequestDate { get; }</Member>
+        <Member type="Property">public DateTime ResponseDate { get; }</Member>
+        <Member type="Property">public RemoteCallResponseStatus Status { get; }</Member>
+        <Member type="Property">public string Message { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>RemoteCallResponseStatus</Name>
+        <Access>Public</Access>
+        <Location left="1274" top="416" />
+        <Size width="170" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int OK</Member>
+        <Member type="Field">int NotAuthorised</Member>
+        <Member type="Field">int UserNotFound</Member>
+        <Member type="Field">int ServerNotFound</Member>
+        <Member type="Field">int ServerError</Member>
+        <Member type="Field">int InvalidRequest</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>RemoteCallResult&lt;T&gt;</Name>
+        <Access>Public</Access>
+        <Location left="890" top="642" />
+        <Size width="260" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public T Result { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>CommunicationProtocol</Name>
+        <Access>Public</Access>
+        <Location left="23" top="21" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int Http</Member>
+        <Member type="Field">int WebSocket</Member>
+        <Member type="Field">int Telnet</Member>
+        <Member type="Field">int Bluetooth</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>INetworkService</Name>
+        <Access>Public</Access>
+        <Location left="23" top="248" />
+        <Size width="251" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">string Address { get; }</Member>
+        <Member type="Property">CommunicationProtocol Protocol { get; }</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>RegisteredServer</Name>
+        <Access>Public</Access>
+        <Location left="23" top="604" />
+        <Size width="257" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string ServerId { get; }</Member>
+        <Member type="Property">public string Address { get; }</Member>
+        <Member type="Property">public CommunicationProtocol Protocol { get; }</Member>
+        <Member type="Property">public DateTime DateRegistered { get; }</Member>
+        <Member type="Property">public bool Enabled { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RemoteConnection</Name>
+        <Access>Public</Access>
+        <Location left="516" top="828" />
+        <Size width="219" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string ServerId { get; }</Member>
+        <Member type="Property">public DateTime DateOpened { get; }</Member>
+        <Member type="Property">public DateTime LastActivityDate { get; }</Member>
+        <Member type="Property">public DateTime? DateClosed { get; }</Member>
+        <Member type="Property">public bool IsOpen { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IRegisteredServerRepository</Name>
+        <Access>Public</Access>
+        <Location left="23" top="849" />
+        <Size width="317" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void AddServer()</Member>
+        <Member type="Method">void GetServer(string serverId)</Member>
+        <Member type="Method">IEnumerable&lt;RegisteredServer&gt; GetAllServers()</Member>
+        <Member type="Method">IEnumerable&lt;RegisteredServer&gt; GetEnabledServers()</Member>
+        <Member type="Method">void UpdateServer(RegisteredServer server)</Member>
+        <Member type="Method">void RemoveServer(string serverId)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>RemoteCallDataType</Name>
+        <Access>Public</Access>
+        <Location left="1445" top="642" />
+        <Size width="162" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int UserData</Member>
+        <Member type="Field">int Commands</Member>
+        <Member type="Field">int Requests</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>968</X>
+          <Y>160</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1569</X>
+          <Y>153</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="9" second="10">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1075</X>
+          <Y>173</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="0" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="1" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>507</X>
+          <Y>175</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>309</X>
+          <Y>296</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="13" second="12">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="14">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="7" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="7" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>814</X>
+          <Y>483</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>865</X>
+          <Y>103</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="1" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>822</X>
+          <Y>66</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="8" second="15">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="8" second="16">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>443</X>
+          <Y>946</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="2" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1284</X>
+          <Y>158</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1524</X>
+          <Y>581</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
